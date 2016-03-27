@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-1.6.xsd"
+        default-menu-title="CMS访问记录" default-menu-index="14">
+    <subscreens default-item="VisitList"/>
+    <widgets>
+        <!-- no menu needed for these, so just show the active screen -->
+        <subscreens-active/>
+    </widgets>
+</screen>

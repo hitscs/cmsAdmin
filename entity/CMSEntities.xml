@@ -2,4 +2,52 @@
 
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-1.6.xsd">
 
+	<entity entity-name="CmsWebSite" package-name="scs.cms">
+
+		<field name="" type="id"></field>
+	</entity>
+	
+	<entity entity-name="CmsCategory" package-name="scs.cms">
+
+		<field name="categoryId" type="id" is-pk="true"></field>
+
+	</entity>
+	<entity entity-name="CmsCategoryType" package-name="scs.cms">
+
+		<field name="" type="id"></field>
+
+	</entity>
+	<entity entity-name="CmsArticle" package-name="scs.cms">
+
+		<field name="" type="id"></field>
+	</entity>
+
+	<entity entity-name="CmsArticleType" package-name="scs.cms">
+
+		<field name="" type="id"></field>
+	</entity>
+
+
+
+
+	<entity entity-name="CmsComment" package-name="scs.cms">
+
+		<field name="" type="id"></field>
+	</entity>
+
+
+	<entity entity-name="CmsLeaveword" package-name="scs.cms">
+
+		<field name="" type="id"></field>
+	</entity>
+
+
+	<entity entity-name="CmsQuestion" package-name="scs.cms">
+
+		<field name="" type="id"></field>
+	</entity>
+		<entity entity-name="CmsVote" package-name="scs.cms">
+
+		<field name="" type="id"></field>
+	</entity>
 </entities>
