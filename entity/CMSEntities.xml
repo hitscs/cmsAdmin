@@ -2,52 +2,237 @@
 
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-1.6.xsd">
 
-	<entity entity-name="CmsWebSite" package-name="scs.cms">
+	<entity entity-name="CmsWebsite" package-name="scs.cms" group-name="cms">
 
-		<field name="" type="id"></field>
+		<field name="websiteId" type="id" is-pk="true">
+			<description>网站Id</description>
+		</field>
+		<field name="websiteName" type="id">
+			<description>站点名称</description>
+		</field>
+		<field name="parentId" type="id">
+			<description>父站点</description>
+		</field>
+		<field name="webDomain" type="text-medium">
+			<description>域名</description>
+		</field>
+		<field name="resPath" type="text-medium">
+			<description>资源路径</description>
+		</field>
+		<field name="resDomain" type="text-medium">
+			<description>资源地址</description>
+		</field>
+		<field name="baseDomain" type="text-medium">
+			<description>根域名</description>
+		</field>
+		<field name="shortName" type="text-medium">
+			<description>简称</description>
+		</field>
+		<field name="captchaOn" type="number-integer" default="0">
+			<description>是否开启验证码（0：关闭；1：开启）</description>
+		</field>
+		<field name="closeReason" type="text-medium">
+			<description>网站暂时关闭  关闭原因</description>
+		</field>
+		<field name="isClose" type="number-integer" default="0">
+			<description>是否关闭网站（后台仍可访问，1：关闭；0：开启）</description>
+		</field>
+		<field name="description" type="text-medium">
+			<description>描述</description>
+		</field>
+		<field name="copyright" type="text-medium">
+			<description>版权信息</description>
+		</field>
+		<field name="recordCode" type="text-medium">
+			<description>备案号</description>
+		</field>
+		<relationship type="one" title="Parent" related-entity-name="scs.cms.CmsWebsite">
+			<key-map field-name="parentId" related-field-name="websiteId" />
+		</relationship>
+
 	</entity>
+
+	<entity entity-name="CmsCategory" package-name="scs.cms" group-name="cms">
+
+		<field name="categoryId" type="id" is-pk="true">
+			<description>栏目ID</description>
+		</field>
+
+		<field name="categoryTypeId" type="id"></field>
+		<field name="statusId" type="id"></field>
+		<field name="websiteId" type="id">
+			<description>网站Id</description>
+		</field>
+		<field name="parentId" type="id">
+			<description>父栏目ID</description>
+		</field>
+		<field name="categoryPath" type="text-medium">
+			<description>栏目路径</description>
+		</field>
+		<field name="categoryName" type="text-medium">
+			<description>栏目名称</description>
+		</field>
+		<field name="content" type="text-medium">
+			<description>栏目内容</description>
+		</field>
+		<field name="titleImg" type="text-medium">
+			<description>栏目缩略图</description>
+		</field>
+		<field name="contentImg" type="text-medium">
+			<description>栏目内容图</description>
+		</field>
+		<field name="tplIndex" type="text-medium">
+			<description>栏目页模板路径</description>
+		</field>
+		<field name="tplContent" type="text-medium">
+			<description>内容页模板路径</description>
+		</field>
+		<field name="title" type="text-medium">
+			<description>TITLE</description>
+		</field>
+		<field name="keywords" type="text-medium">
+			<description>关键字</description>
+		</field>
+		<field name="description" type="text-medium">
+			<description>描述</description>
+		</field>
+
+		<field name="isDisplay" type="number-integer" default="1">
+			<description>是否显示（0：关闭；1：开启）</description>
+		</field>
+		<relationship type="one" title="Parent" related-entity-name="scs.cms.CmsCategory">
+			<key-map field-name="parentId" related-field-name="categoryId" />
+		</relationship>
+		<relationship type="one" title="Website" related-entity-name="scs.cms.CmsWebsite">
+			<key-map field-name="websiteId"/>
+		</relationship>
+	</entity>
+	<entity entity-name="CmsCategoryType" package-name="scs.cms" group-name="cms">
+
+		<field name="categoryTypeId" type="id" is-pk="true">
+			<description>目录分类ID</description>
+		</field>
+		<field name="categoryTypeName" type="text-medium">
+			<description>目录分类名称</description>
+		</field>
+		<field name="description" type="text-medium">
+			<description>目录分类描述</description>
+		</field>
+
+	</entity>
+	<entity entity-name="CmsArticle" package-name="scs.cms" group-name="cms">
+
+		<field name="articleId" type="id" is-pk="true">
+			<description>primary sequenced ID</description>
+		</field>
+		<field name="articleTypeId" type="id"></field>
+		<field name="statusId" type="id"></field>
+		<field name="categoryId" type="id">
+			<description></description>
+		</field>
+		<field name="websiteId" type="id">
+			<description>网站Id</description>
+		</field>
+		<field name="description" type="text-medium"></field>
+		<field name="title" type="text-medium"></field>
+		<field name="contentId" type="id">
+			<description>文章内容ID</description>
+		</field>
+		<field name="author" type="text-medium">
+			<description>作者</description>
+		</field>
+		<field name="ownerId" type="id">
+			<description>所有者（文章创建人）</description>
+		</field>
+		<field name="shortTitle" type="text-medium">
+			<description>简短标题（用于栏目或首页索引）</description>
+		</field>
+		<field name="titleColor" type="text-medium">
+			<description>标题颜色</description>
+		</field>
+		<field name="titleImg" type="text-medium">
+			<description>文章标题缩略图</description>
+		</field>
+		<field name="contentImg" type="text-medium">
+			<description>文章内容图</description>
+		</field>
+		<field name="tags" type="text-medium">
+			<description>标记，类似关键字</description>
+		</field>
+		<field name="origin" type="text-medium">
+			<description>来源</description>
+		</field>
+
+		<field name="releaseDate" type="date">
+			<description>发表日期（可人为设置）</description>
+		</field>
+		<field name="releaseSysDate" type="date">
+			<description>发布日期（系统日期）</description>
+		</field>
+		<field name="checkTime" type="date-time">
+			<description>终审通过时间</description>
+		</field>
+		<field name="disableTime" type="date-time">
+			<description>禁用时间</description>
+		</field>
+
+		<field name="allowComment" type="number-integer">
+			<description>是否允许评论</description>
+		</field>
+		<relationship type="one" title="Content" related-entity-name="scs.cms.CmsContent">
+			<key-map field-name="contentId"/>
+		</relationship>			
+		<relationship type="one" title="ArticleType" related-entity-name="scs.cms.CmsArticleType">
+			<key-map field-name="articleTypeId"/>
+		</relationship>		
+		<relationship type="one" title="Category" related-entity-name="scs.cms.CmsCategory">
+			<key-map field-name="categoryId"/>
+		</relationship>
+		<relationship type="one" title="Website" related-entity-name="scs.cms.CmsWebsite">
+			<key-map field-name="websiteId"/>
+		</relationship>		
 	
-	<entity entity-name="CmsCategory" package-name="scs.cms">
-
-		<field name="categoryId" type="id" is-pk="true"></field>
-
-	</entity>
-	<entity entity-name="CmsCategoryType" package-name="scs.cms">
-
-		<field name="" type="id"></field>
-
-	</entity>
-	<entity entity-name="CmsArticle" package-name="scs.cms">
-
-		<field name="" type="id"></field>
 	</entity>
 
-	<entity entity-name="CmsArticleType" package-name="scs.cms">
+	<entity entity-name="CmsArticleType" package-name="scs.cms" group-name="cms">
 
-		<field name="" type="id"></field>
+		<field name="articleTypeId" type="id" is-pk="true">
+			<description>编号</description>
+		</field>
+		<field name="displayName" type="id-long">
+			<description>显示名称</description>
+		</field>
+		<field name="displayLevel" type="number-integer">
+			<description>优先级别</description>
+		</field>
+
 	</entity>
+	<entity entity-name="CmsContent" package-name="scs.cms" group-name="cms">
 
-
-
-
-	<entity entity-name="CmsComment" package-name="scs.cms">
-
-		<field name="" type="id"></field>
+		<field name="contentId" type="id" is-pk="true"></field>
+		<field name="content" type="text-long"></field>
 	</entity>
 
 
-	<entity entity-name="CmsLeaveword" package-name="scs.cms">
 
-		<field name="" type="id"></field>
+	<entity entity-name="CmsComment" package-name="scs.cms" group-name="cms">
+
+		<field name="commentId" type="id"></field>
 	</entity>
 
 
-	<entity entity-name="CmsQuestion" package-name="scs.cms">
+	<entity entity-name="CmsLeaveword" package-name="scs.cms" group-name="cms">
 
-		<field name="" type="id"></field>
+		<field name="leavewordId" type="id"></field>
 	</entity>
-		<entity entity-name="CmsVote" package-name="scs.cms">
 
-		<field name="" type="id"></field>
+
+	<entity entity-name="CmsQuestion" package-name="scs.cms" group-name="cms">
+
+		<field name="questionId" type="id"></field>
+	</entity>
+	<entity entity-name="CmsVote" package-name="scs.cms" group-name="cms">
+
+		<field name="voteId" type="id"></field>
 	</entity>
 </entities>

@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-1.6.xsd"
-	default-menu-title="CMS文章管理" default-menu-index="2">
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-1.6.xsd" default-menu-title="CMS文章管理"
+	default-menu-index="2">
 	<widgets>
+		<container-box>
+			<box-header>
+				<container type="li" style="fa fa-edit" />
+				<label text="文章列表" type="h5" style="box-title" />
+			</box-header>
+			<box-body>
+				<form-list name="articles" list-entry="scs.cms.CmsArticle">
+					<auto-fields-entity entity-name="scs.cms.CmsArticle" />
+				</form-list>
 
+			</box-body>
+		</container-box>
 
 	</widgets>
 </screen>
