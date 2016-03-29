@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-1.6.xsd"
+	default-menu-title="CMS文章管理" default-menu-index="2">
+	<transition name="search">
+		<default-response url="." />
+	</transition>
+	<actions>
+		<entity-find entity-name="scs.cms.CmsArticle" list="articleList">
+			<search-form-inputs default-order-by="" />
+		</entity-find>
+	</actions>
+	<widgets>
+		<container-box>
+			<box-header>
+				<container type="li" style="fa fa-edit" />
+				<label text="文章列表" type="h5" style="box-title" />
+			</box-header>
+			<box-body>
+				<form-single name="article" transition="search">
+
+				</form-single>
+
+			</box-body>
+		</container-box>
+		<form-list name="articleList" list="articleList" list-entry="scs.cms.CmsArticle">
+			<auto-fields-entity entity-name="scs.cms.CmsArticle" />
+		</form-list>
+	</widgets>
+</screen>
