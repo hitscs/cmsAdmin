@@ -18,12 +18,80 @@
 			<box-body>
 				<form-single name="article" transition="search">
 
+					<field name="title">
+						<default-field title="标题：">
+							<text-line size="30" />
+						</default-field>
+					</field>
+					<field name="author">
+						<default-field title="作者：">
+							<text-line size="15" />
+						</default-field>
+					</field>
+					<field name="statusId">
+						<default-field title="状态：">
+							<drop-down no-current-selected-key="1" >
+								<option key="1" text="发布" />
+								<option key="2" text="停止发布 " />
+							</drop-down>
+						</default-field>
+					</field>
+					<field name="categoryId">
+						<default-field title="类别：">
+							<drop-down no-current-selected-key="1">
+								<option key="1" text="111" />
+								<option key="2" text="222 " />
+							</drop-down>
+						</default-field>
+					</field>
+					<field name="submitButton">
+						<default-field title="提交">
+							<submit />
+						</default-field>
+					</field>
+					<field name="resetButton">
+						<default-field title="重置">
+							<reset />
+						</default-field>
+					</field>
+					<field-layout>
+						<field-row>
+							<field-ref name="title" />
+							<field-ref name="author" />
+						</field-row>
+						<field-row>
+							<field-ref name="categoryId" />
+							<field-ref name="statusId" />
+						</field-row>
+						<field-row>
+							<field-ref name="submitButton" />
+							<field-ref name="resetButton" />
+
+						</field-row>
+
+					</field-layout>
 				</form-single>
 
 			</box-body>
+
 		</container-box>
+
+
+
+
+	<container-box>
+		<box-header></box-header>
+		<box-body>
+				<container>
+			<link url="." text="Get as CSV" target-window="_blank" expand-transition-url="false" />
+			<link url="." text="Get as XML" target-window="_blank" expand-transition-url="false" />
+			<link url="." text="Get as PDF" target-window="_blank" />
+		</container>
 		<form-list name="articleList" list="articleList" list-entry="scs.cms.CmsArticle">
 			<auto-fields-entity entity-name="scs.cms.CmsArticle" />
 		</form-list>
+		</box-body>
+	</container-box>
+
 	</widgets>
 </screen>
