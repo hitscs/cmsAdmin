@@ -58,7 +58,7 @@
 			<description>栏目ID</description>
 		</field>
 
-		<field name="categoryTypeId" type="id"></field>
+		<!-- <field name="categoryTypeId" type="id"></field> -->
 		<field name="statusId" type="id"></field>
 		<field name="websiteId" type="id">
 			<description>网站Id</description>
@@ -135,9 +135,9 @@
 		</field>
 		<field name="description" type="text-medium"></field>
 		<field name="title" type="text-medium"></field>
-		<field name="contentId" type="id">
+<!-- 		<field name="contentId" type="id">
 			<description>文章内容ID</description>
-		</field>
+		</field> -->
 		<field name="author" type="text-medium">
 			<description>作者</description>
 		</field>
@@ -179,9 +179,9 @@
 		<field name="allowComment" type="number-integer">
 			<description>是否允许评论</description>
 		</field>
-		<relationship type="one" title="Content" related-entity-name="scs.cms.CmsContent">
+<!-- 		<relationship type="one" title="Content" related-entity-name="scs.cms.CmsContent">
 			<key-map field-name="contentId"/>
-		</relationship>			
+		</relationship>	 -->		
 		<relationship type="one" title="ArticleType" related-entity-name="scs.cms.CmsArticleType">
 			<key-map field-name="articleTypeId"/>
 		</relationship>		
@@ -209,7 +209,7 @@
 	</entity>
 	<entity entity-name="CmsContent" package-name="scs.cms" group-name="cms">
 
-		<field name="contentId" type="id" is-pk="true"></field>
+		<field name="articleId" type="id" is-pk="true"></field>
 		<field name="content" type="text-long"></field>
 	</entity>
 

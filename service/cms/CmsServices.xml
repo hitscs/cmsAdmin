@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-1.6.xsd">
+	<service verb="create" noun="CmsArticle" displayName="新建文章" allow-remote="true" type="entity-auto">
+		<in-parameters>
+			<auto-parameters include="nonpk" />
+			<parameter name="title" required="true" />
+			<!-- <parameter name="author" required="true" /> -->
+			<parameter name="content" allow-html="safe" />
+		</in-parameters>
+		<out-parameters>
+			<auto-parameters include="pk" required="true" />
+		</out-parameters>
+		<actions>
+			<service-call name="create#scs.cms.CmsArticle" in-map="context" out-map="newArticleOut" />
+			<set field="articleId" from="newArticleOut.articleId" />
+			<service-call name="create#scs.cms.CmsContent" in-map="context" />
+
+		</actions>
+	</service>
+
+</services>
