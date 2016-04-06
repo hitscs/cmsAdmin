@@ -65,7 +65,7 @@
 						<field-row>
 							<field-ref name="categoryId" />
 							<field-ref name="statusId" />
-						</field-row>
+						</field-row>						
 						<field-row>
 							<field-ref name="submitButton" />
 							<field-ref name="resetButton" />
