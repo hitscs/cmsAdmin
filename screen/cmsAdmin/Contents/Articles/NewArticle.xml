@@ -1,84 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-1.6.xsd"
-	default-menu-title="新建文章" default-menu-index="1" default-menu-include="false">
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-1.6.xsd" default-menu-title="新建文章"
+	default-menu-index="1" default-menu-include="false">
 	<transition name="createArticle">
-	<actions>
+		<actions>
 
-	<service-call name="cms.CmsServices.create#CmsArticle" in-map="context" />
-	</actions>
-		
+			<service-call name="cms.CmsServices.create#CmsArticle" in-map="context" />
+		</actions>
+
 
 		<default-response url="../ArticleList" />
 	</transition>
 
 	<widgets>
+		<!-- <container-box> <box-header> <container type="li" style="fa fa-edit" /> <label text="文章列表" type="h5" style="box-title" /> </box-header> <box-body> <form-single 
+			name="article" transition="createArticle"> <field name="title"> <default-field title="标题："> <text-line size="30" /> </default-field> </field> <field name="author"> 
+			<default-field title="作者："> <text-line size="15" /> </default-field> </field> <field name="statusId"> <default-field title="状态："> <drop-down no-current-selected-key="1"> 
+			<option key="1" text="发布" /> <option key="2" text="停止发布 " /> </drop-down> <label text="1111111111111" /> </default-field> </field> <field name="categoryId"> <default-field 
+			title="类别："> <drop-down no-current-selected-key="1"> <option key="1" text="111" /> <option key="2" text="222 " /> </drop-down> </default-field> </field> <field name="submitButton"> 
+			<default-field title="提交"> <submit /> </default-field> </field> <field name="resetButton"> <default-field title="重置"> <reset /> </default-field> </field> <field-layout> 
+			<field-row> <field-ref name="title" /> <field-ref name="author" /> </field-row> <field-row> <field-ref name="categoryId" /> <field-ref name="statusId" /> </field-row> 
+			<field-row> <field-ref name="submitButton" /> <field-ref name="resetButton" /> </field-row> </field-layout> </form-single> <ueditor /> </box-body> </container-box> -->
 		<container-box>
 			<box-header>
 				<container type="li" style="fa fa-edit" />
-				<label text="文章列表" type="h5" style="box-title" />
+				<label text="新建文章" type="h5" style="box-title" />
 			</box-header>
 			<box-body>
-				<form-single name="article" transition="createArticle">
+				<render-mode>
+					<text type="html" location="component://cmsAdmin/screen/cmsAdmin/Contents/Articles/NewArticle.ftl" no-boundary-comment="true" />
+				</render-mode>
 
-					<field name="title">
-						<default-field title="标题：">
-							<text-line size="30" />
-						</default-field>
-					</field>
-					<field name="author">
-						<default-field title="作者：">
-							<text-line size="15" />
-						</default-field>
-					</field>
-					<field name="statusId">
-						<default-field title="状态：">
-							<drop-down no-current-selected-key="1">
-								<option key="1" text="发布" />
-								<option key="2" text="停止发布 " />
-							</drop-down>
-							<label text="1111111111111" />
-						</default-field>
-					</field>
-					<field name="categoryId">
-						<default-field title="类别：">
-							<drop-down no-current-selected-key="1">
-								<option key="1" text="111" />
-								<option key="2" text="222 " />
-							</drop-down>
-						</default-field>
-					</field>
-					<field name="submitButton">
-						<default-field title="提交">
-							<submit />
-						</default-field>
-					</field>
-					<field name="resetButton">
-						<default-field title="重置">
-							<reset />
-						</default-field>
-					</field>
-					<field-layout>
-						<field-row>
-							<field-ref name="title" />
-							<field-ref name="author" />
-						</field-row>
-						<field-row>
-							<field-ref name="categoryId" />
-							<field-ref name="statusId" />
-						</field-row>						
-						<field-row>
-							<field-ref name="submitButton" />
-							<field-ref name="resetButton" />
-
-						</field-row>
-
-					</field-layout>
-				</form-single>
-				<ueditor />
 			</box-body>
-
 		</container-box>
-
 
 
 	</widgets>
