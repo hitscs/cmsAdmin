@@ -11,9 +11,12 @@
 	</actions>
 	<widgets>
 		<container-box>
-			<box-header></box-header>
-			<box-body>
-				<container-dialog id="CreateCategoryDialog" button-text="新建分类">
+			<box-header>
+							<container type="li" style="fa fa-edit" />
+				<label text="分类管理" type="h5" style="box-title" />
+			</box-header>
+			<box-toolbar>
+							<container-dialog id="CreateCategoryDialog" button-text="新建分类">
 					<form-single name="CreateCategory" transition="createCategory">
 						<field name="categoryName">
 							<default-field title="分类名称">
@@ -32,6 +35,9 @@
 						</field>
 					</form-single>
 				</container-dialog>
+			</box-toolbar>
+			<box-body>
+
 				<form-list name="categories" list="categoryList">
 					<field name="categoryName">
 						<default-field title="分类名称">

@@ -3,7 +3,6 @@
 	default-menu-index="1" default-menu-include="false">
 	<transition name="createArticle">
 		<actions>
-
 			<service-call name="cms.CmsServices.create#CmsArticle" in-map="context" />
 		</actions>
 

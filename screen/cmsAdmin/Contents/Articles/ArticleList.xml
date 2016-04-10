@@ -4,13 +4,16 @@
 	<transition name="search">
 		<default-response url="." />
 	</transition>
+	<transition name="editArticle">
+		<default-response url="../EditArticle" />
+	</transition>
 	<actions>
 		<entity-find entity-name="scs.cms.CmsArticle" list="articleList">
 			<search-form-inputs default-order-by="^articleId" />
 		</entity-find>
 
 		<entity-find entity-name="scs.cms.CmsCategory" list="categoryList">
-			
+
 		</entity-find>
 
 	</actions>
@@ -18,7 +21,7 @@
 		<container-box>
 			<box-header>
 				<container type="li" style="fa fa-edit" />
-				<label text="文章列表" type="h5" style="box-title" />
+				<label text="文章管理" type="h5" style="box-title" />
 			</box-header>
 			<box-body>
 				<form-single name="article" transition="search">
@@ -88,17 +91,21 @@
 			<box-body>
 				<container>
 					<link url="../NewArticle" text="新建文章" expand-transition-url="false" />
-					<link url="../NewArticle" text="Get as PDF" target-window="_blank" />
 				</container>
 				<form-list name="articles" list="articleList">
 					<field name="title">
-						<default-field title="标题：">
-							<text-line size="30" />
+						<default-field title="标题">
+							<link text="${title}" url="editArticle" link-type="anchor" />
 						</default-field>
 					</field>
 					<field name="author">
-						<default-field title="作者：">
-							<text-line size="15" />
+						<default-field title="作者">
+							<display />
+						</default-field>
+					</field>
+					<field name="categoryId">
+						<default-field title="目录">
+							<display />
 						</default-field>
 					</field>
 				</form-list>

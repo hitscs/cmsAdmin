@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-1.6.xsd" default-menu-title="新建文章"
+	default-menu-index="1" default-menu-include="false">
+	<parameter name="articleId" required="true"/>
+	<transition name="createArticle">
+		<actions>
+			<service-call name="cms.CmsServices.create#CmsArticle" in-map="context" />
+		</actions>
+
+
+		<default-response url="../ArticleList" />
+	</transition>
+
+	<widgets>
+		<container-box>
+			<box-header>
+				<container type="li" style="fa fa-edit" />
+				<label text="新建文章" type="h5" style="box-title" />
+			</box-header>
+			<box-body>
+				<render-mode>
+					<text type="html" location="component://cmsAdmin/screen/cmsAdmin/Contents/Articles/NewArticle.ftl" no-boundary-comment="true" />
+				</render-mode>
+
+			</box-body>
+		</container-box>
+
+
+	</widgets>
+</screen>
